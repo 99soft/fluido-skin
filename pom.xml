@@ -32,13 +32,6 @@
     <url>http://github.com/99soft/fluido-skin/</url>
     <inceptionYear>2011</inceptionYear>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-        </license>
-    </licenses>
-
     <scm>
         <url>http://github.com/99soft/fluido-skin</url>
         <connection>scm:git:ssh://github.com/99soft/fluido-skin.git</connection>
