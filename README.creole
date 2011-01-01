@@ -1,0 +1,22 @@
+The fluido-skin is an alternative Maven site skin with rounded corners and code syntax highlight.
+
+Do you want to see how does it look? Check these projects pages:
+ * [[http://developers.any23.org/|Any23 developers guide]]
+ * [[http://people.apache.org/~simonetripodi|Simone Tripodi at Apache]]
+
+Using it it's quite easy: it is available on Maven central repository and all you need is just add the following XML
+snippet in your {{{site.xml}}}:
+
+{{{
+<project name="XXXXXXXX">
+    ....
+    <skin>
+        <groupId>org.99soft</groupId>
+        <artifactId>fluido-skin</artifactId>
+        <version>VERSION</version>
+    </skin>
+    ....
+</project>
+}}} 
+
+That's all, have fun with it! :)
