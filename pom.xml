@@ -23,10 +23,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.99soft</groupId>
     <artifactId>fluido-skin</artifactId>
-    <packaging>jar</packaging>
     <version>1.4-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>Fluido Skin</name>
     <description>An alternative Maven site skin with rounded corners and code syntax highlight.</description>
     <url>http://github.com/99soft/fluido-skin/</url>
