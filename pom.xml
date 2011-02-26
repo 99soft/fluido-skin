@@ -19,12 +19,12 @@
     <parent>
         <groupId>org.99soft</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>1-SNAPSHOT</version>
+        <version>1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>fluido-skin</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <version>1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Fluido Skin</name>
     <description>An alternative Maven site skin with rounded corners and code syntax highlight.</description>
@@ -34,7 +34,7 @@
     <scm>
         <url>http://github.com/99soft/fluido-skin</url>
         <connection>scm:git:ssh://github.com/99soft/fluido-skin.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/99soft/fluido-skin.git</developerConnection>
+        <developerConnection>scm:git:git+ssh://git@github.com/99soft/fluido-skin.git</developerConnection>
     </scm>
 
     <issueManagement>
