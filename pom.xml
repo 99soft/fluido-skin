@@ -16,20 +16,29 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <parent>
-        <groupId>org.99soft</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>1</version>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
+    <groupId>org.99soft</groupId>
     <artifactId>fluido-skin</artifactId>
     <version>1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Fluido Skin</name>
-    <description>An alternative Maven site skin with rounded corners and code syntax highlight.</description>
+    <description>Fluido Skin is the 99soft branded alternative Maven site skin with
+    rounded corners and code syntax highlight.</description>
     <url>http://github.com/99soft/fluido-skin/</url>
     <inceptionYear>2011</inceptionYear>
+
+    <organization>
+        <name>99 Software Foundation</name>
+        <url>http://www.99soft.org/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <scm>
         <url>http://github.com/99soft/fluido-skin</url>
@@ -42,7 +51,76 @@
         <url>https://github.com/99soft/fluido-skin/issues</url>
     </issueManagement>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <developers>
+        <developer>
+            <id>dpalmisano</id>
+            <name>Davide Palmisano</name>
+            <email>dpalmisano [at] gmail [dot] com</email>
+            <url>http://davidepalmisano.com/</url>
+            <timezone>+1</timezone>
+        </developer>
+
+        <developer>
+            <id>marcosperanza</id>
+            <name>Marco Speranza</name>
+            <email>marco [dot] speranza79 [at] gmail [dot] com</email>
+            <url>http://www.marcosperanza.org/</url>
+            <timezone>+1</timezone>
+        </developer>
+
+        <developer>
+            <id>simonetripodi</id>
+            <name>Simone Tripodi</name>
+            <email>simone [dot] tripodi [at] gmail [dot] com</email>
+            <url>http://people.apache.org/~simonetripodi</url>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
+        <implementation.build>${maven.build.timestamp}</implementation.build>
+    </properties>
+
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Build>${implementation.build}</Implementation-Build>
+                            <X-Compile-Source-JDK>${javac.src.version}</X-Compile-Source-JDK>
+                            <X-Compile-Target-JDK>${javac.target.version}</X-Compile-Target-JDK>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+
         <resources>
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
@@ -50,5 +128,83 @@
             </resource>
         </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.1.2</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                                <configuration>
+                                    <archive>
+                                        <manifest>
+                                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                                        </manifest>
+                                        <manifestEntries>
+                                            <Implementation-Build>${implementation.build}</Implementation-Build>
+                                            <X-Compile-Source-JDK>${javac.src.version}</X-Compile-Source-JDK>
+                                            <X-Compile-Target-JDK>${javac.target.version}</X-Compile-Target-JDK>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <quiet>true</quiet>
+                                    <archive>
+                                        <manifest>
+                                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                                        </manifest>
+                                        <manifestEntries>
+                                            <Implementation-Build>${implementation.build}</Implementation-Build>
+                                            <X-Compile-Source-JDK>${javac.src.version}</X-Compile-Source-JDK>
+                                            <X-Compile-Target-JDK>${javac.target.version}</X-Compile-Target-JDK>
+                                        </manifestEntries>
+                                    </archive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
