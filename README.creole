@@ -1,7 +1,9 @@
 The fluido-skin is an alternative Maven site skin with rounded corners and code syntax highlight.
 
 Do you want to see how does it look? Check these projects pages:
+ * [[http://scale4j.googlecode.com/svn/site/0.1/index.html|Scale4J]]
  * [[http://developers.any23.org/|Any23 developers guide]]
+ * [[http://people.apache.org/~olamy/resume/|Olivier Olamy at Apache]]
  * [[http://people.apache.org/~simonetripodi|Simone Tripodi at Apache]]
 
 Using it it's quite easy: it is available on Maven central repository and all you need is just add the following XML
