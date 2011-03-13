@@ -42,4 +42,13 @@
         <url>https://github.com/99soft/fluido-skin/issues</url>
     </issueManagement>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
 </project>
